@@ -10,6 +10,14 @@ spec:
   meshConfig:
     defaultConfig:
       proxyMetadata: {}
+      extraStatTags:
+      - destination_port
+      - request_host
+      - destination_host
+      - destination_port
+      - destination_ip
+      - destination_uid
+      - destination_name
     enablePrometheusMerge: true
     accessLogFile: /dev/stdout
     extensionProviders:
@@ -175,6 +183,118 @@ spec:
         metadataExchange:
           wasmEnabled: false
         prometheus:
+          configOverride:
+            inboundSidecar:
+              metrics:
+                - name: requests_total
+                  dimensions:
+                    destination_port: string(destination.port)
+                    request_host: request.host
+                    source_port: string(source.port)
+                    destination_ip: string(destination.ip)
+                    source_ip: string(source.ip)
+                    destination_ext_ip: string(destination.external_ip)
+                    destination_cluster_ip: string(destination.cluster_ip)
+                    source_ext_ip: string(source.external_ip)
+                    source_cluster_ip: string(source.cluster_ip)
+                    destination_host: destination.host
+                    source_host: source.host
+                    request_sourceSubnet: request.sourceSubnet
+                    source_subnet: source.subnet
+                    destination_subnet: destination.subnet
+                    destination_subnets: destination.subnets
+                    request_url: request.url_path
+                    source_url: source.url_path
+                    destination_url: destination.url_path
+                    destination_host: destination.service.host
+                    destination_port: string(destination.port)
+                    destination_ip: string(destination.ip)
+                    destination_uid: destination.uid
+                    destination_name: destination.name
+                    # source_port: string(source.port)
+                    # source_ip: string(source.ip)
+                    # source_uid: source.uid
+                    # source_name: source.name
+                    # origin_ip: string(origin.ip)
+                    # request_path: request.path
+                    # request_size: string(request.size)
+                    # response_size: string(response.size)
+                    # response_duration: string(response.duration)
+                    # response_code: string(response.code)
+            outboundSidecar:
+              metrics:
+                - name: requests_total
+                  dimensions:
+                    destination_port: string(destination.port)
+                    request_host: request.host
+                    source_port: string(source.port)
+                    destination_ip: string(destination.ip)
+                    source_ip: string(source.ip)
+                    destination_ext_ip: string(destination.external_ip)
+                    destination_cluster_ip: string(destination.cluster_ip)
+                    source_ext_ip: string(source.external_ip)
+                    source_cluster_ip: string(source.cluster_ip)
+                    destination_host: destination.host
+                    source_host: source.host
+                    request_sourceSubnet: request.sourceSubnet
+                    source_subnet: source.subnet
+                    destination_subnet: destination.subnet
+                    destination_subnets: destination.subnets
+                    request_url: request.url_path
+                    source_url: source.url_path
+                    destination_url: destination.url_path
+                    destination_host: destination.service.host
+                    destination_port: string(destination.port)
+                    destination_ip: string(destination.ip)
+                    destination_uid: destination.uid
+                    destination_name: destination.name
+                    # source_port: string(source.port)
+                    # source_ip: string(source.ip)
+                    # source_uid: source.uid
+                    # source_name: source.name
+                    # origin_ip: string(origin.ip)
+                    # request_path: request.path
+                    # request_size: string(request.size)
+                    # response_size: string(response.size)
+                    # response_duration: string(response.duration)
+                    # response_code: string(response.code)
+            gateway:
+              metrics:
+                - name: requests_total
+                  dimensions:
+                    destination_port: string(destination.port)
+                    request_host: request.host
+                    source_port: string(source.port)
+                    destination_ip: string(destination.ip)
+                    source_ip: string(source.ip)
+                    destination_ext_ip: string(destination.external_ip)
+                    destination_cluster_ip: string(destination.cluster_ip)
+                    source_ext_ip: string(source.external_ip)
+                    source_cluster_ip: string(source.cluster_ip)
+                    destination_host: destination.host
+                    source_host: source.host
+                    request_sourceSubnet: request.sourceSubnet
+                    source_subnet: source.subnet
+                    destination_subnet: destination.subnet
+                    destination_subnets: destination.subnets
+                    request_url: request.url_path
+                    source_url: source.url_path
+                    destination_url: destination.url_path
+                    destination_host: destination.service.host
+                    destination_port: string(destination.port)
+                    destination_ip: string(destination.ip)
+                    destination_uid: destination.uid
+                    destination_name: destination.name
+                    # source_port: string(source.port)
+                    # source_ip: string(source.ip)
+                    # source_uid: source.uid
+                    # source_name: source.name
+                    # origin_ip: string(origin.ip)
+                    # request_path: request.path
+                    # request_size: string(request.size)
+                    # response_size: string(response.size)
+                    # response_duration: string(response.duration)
+                    # response_code: string(response.code)
           wasmEnabled: false
           enabled: true
         stackdriver:
@@ -189,27 +309,27 @@ spec:
       
     gateways:
       istio-egressgateway:
-        env: {}
         autoscaleEnabled: true
-        type: ClusterIP
-        name: istio-egressgateway
-        secretVolumes:
-          - name: egressgateway-certs
-            secretName: istio-egressgateway-certs
-            mountPath: /etc/istio/egressgateway-certs
-          - name: egressgateway-ca-certs
-            secretName: istio-egressgateway-ca-certs
-            mountPath: /etc/istio/egressgateway-ca-certs
+        # type: ClusterIP
+        # name: istio-egressgateway
+        # env: {}
+        # secretVolumes:
+        #   - name: egressgateway-certs
+        #     secretName: istio-egressgateway-certs
+        #     mountPath: /etc/istio/egressgateway-certs
+        #   - name: egressgateway-ca-certs
+        #     secretName: istio-egressgateway-ca-certs
+        #     mountPath: /etc/istio/egressgateway-ca-certs
 
       istio-ingressgateway:
         autoscaleEnabled: true
-        type: LoadBalancer
-        name: istio-ingressgateway
-        env: {}
-        secretVolumes:
-          - name: ingressgateway-certs
-            secretName: istio-ingressgateway-certs
-            mountPath: /etc/istio/ingressgateway-certs
-          - name: ingressgateway-ca-certs
-            secretName: istio-ingressgateway-ca-certs
-            mountPath: /etc/istio/ingressgateway-ca-certs
+        # type: LoadBalancer
+        # name: istio-ingressgateway
+        # env: {}
+        # secretVolumes:
+        #   - name: ingressgateway-certs
+        #     secretName: istio-ingressgateway-certs
+        #     mountPath: /etc/istio/ingressgateway-certs
+        #   - name: ingressgateway-ca-certs
+        #     secretName: istio-ingressgateway-ca-certs
+        #     mountPath: /etc/istio/ingressgateway-ca-certs
