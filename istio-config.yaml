@@ -11,13 +11,24 @@ spec:
     defaultConfig:
       proxyMetadata: {}
       extraStatTags:
-      - destination_port
       - request_host
       - destination_host
       - destination_port
       - destination_ip
-      - destination_uid
-      - destination_name
+      - destination_uid 
+      - destination_name 
+      - source_port
+      - source_ip
+      - source_uid
+      - source_name
+      - origin_ip
+      - request_path
+      - request_size
+      - response_size
+      - response_duration
+      - response_code
+      - api_service
+      - api_operation
     enablePrometheusMerge: true
     accessLogFile: /dev/stdout
     extensionProviders:
@@ -188,113 +199,68 @@ spec:
               metrics:
                 - name: requests_total
                   dimensions:
-                    destination_port: string(destination.port)
                     request_host: request.host
-                    source_port: string(source.port)
-                    destination_ip: string(destination.ip)
-                    source_ip: string(source.ip)
-                    destination_ext_ip: string(destination.external_ip)
-                    destination_cluster_ip: string(destination.cluster_ip)
-                    source_ext_ip: string(source.external_ip)
-                    source_cluster_ip: string(source.cluster_ip)
-                    destination_host: destination.host
-                    source_host: source.host
-                    request_sourceSubnet: request.sourceSubnet
-                    source_subnet: source.subnet
-                    destination_subnet: destination.subnet
-                    destination_subnets: destination.subnets
-                    request_url: request.url_path
-                    source_url: source.url_path
-                    destination_url: destination.url_path
                     destination_host: destination.service.host
                     destination_port: string(destination.port)
                     destination_ip: string(destination.ip)
                     destination_uid: destination.uid
                     destination_name: destination.name
-                    # source_port: string(source.port)
-                    # source_ip: string(source.ip)
-                    # source_uid: source.uid
-                    # source_name: source.name
-                    # origin_ip: string(origin.ip)
-                    # request_path: request.path
-                    # request_size: string(request.size)
-                    # response_size: string(response.size)
-                    # response_duration: string(response.duration)
-                    # response_code: string(response.code)
+                    source_port: string(source.port)
+                    source_ip: string(source.ip)
+                    source_uid: source.uid
+                    source_name: source.name
+                    origin_ip: string(origin.ip)
+                    request_path: request.path
+                    request_size: string(request.size)
+                    response_size: string(response.size)
+                    response_duration: string(response.duration)
+                    response_code: string(response.code)
+                    api_service: api.service
+                    api_operation: api.operation
             outboundSidecar:
               metrics:
                 - name: requests_total
                   dimensions:
-                    destination_port: string(destination.port)
                     request_host: request.host
-                    source_port: string(source.port)
-                    destination_ip: string(destination.ip)
-                    source_ip: string(source.ip)
-                    destination_ext_ip: string(destination.external_ip)
-                    destination_cluster_ip: string(destination.cluster_ip)
-                    source_ext_ip: string(source.external_ip)
-                    source_cluster_ip: string(source.cluster_ip)
-                    destination_host: destination.host
-                    source_host: source.host
-                    request_sourceSubnet: request.sourceSubnet
-                    source_subnet: source.subnet
-                    destination_subnet: destination.subnet
-                    destination_subnets: destination.subnets
-                    request_url: request.url_path
-                    source_url: source.url_path
-                    destination_url: destination.url_path
                     destination_host: destination.service.host
                     destination_port: string(destination.port)
                     destination_ip: string(destination.ip)
                     destination_uid: destination.uid
                     destination_name: destination.name
-                    # source_port: string(source.port)
-                    # source_ip: string(source.ip)
-                    # source_uid: source.uid
-                    # source_name: source.name
-                    # origin_ip: string(origin.ip)
-                    # request_path: request.path
-                    # request_size: string(request.size)
-                    # response_size: string(response.size)
-                    # response_duration: string(response.duration)
-                    # response_code: string(response.code)
+                    source_port: string(source.port)
+                    source_ip: string(source.ip)
+                    source_uid: source.uid
+                    source_name: source.name
+                    origin_ip: string(origin.ip)
+                    request_path: request.path
+                    request_size: string(request.size)
+                    response_size: string(response.size)
+                    response_duration: string(response.duration)
+                    response_code: string(response.code)
+                    api_service: api.service
+                    api_operation: api.operation
             gateway:
               metrics:
                 - name: requests_total
-                  dimensions:
-                    destination_port: string(destination.port)
+                  dimensions:		                
                     request_host: request.host
-                    source_port: string(source.port)
-                    destination_ip: string(destination.ip)
-                    source_ip: string(source.ip)
-                    destination_ext_ip: string(destination.external_ip)
-                    destination_cluster_ip: string(destination.cluster_ip)
-                    source_ext_ip: string(source.external_ip)
-                    source_cluster_ip: string(source.cluster_ip)
-                    destination_host: destination.host
-                    source_host: source.host
-                    request_sourceSubnet: request.sourceSubnet
-                    source_subnet: source.subnet
-                    destination_subnet: destination.subnet
-                    destination_subnets: destination.subnets
-                    request_url: request.url_path
-                    source_url: source.url_path
-                    destination_url: destination.url_path
                     destination_host: destination.service.host
                     destination_port: string(destination.port)
                     destination_ip: string(destination.ip)
                     destination_uid: destination.uid
                     destination_name: destination.name
-                    # source_port: string(source.port)
-                    # source_ip: string(source.ip)
-                    # source_uid: source.uid
-                    # source_name: source.name
-                    # origin_ip: string(origin.ip)
-                    # request_path: request.path
-                    # request_size: string(request.size)
-                    # response_size: string(response.size)
-                    # response_duration: string(response.duration)
-                    # response_code: string(response.code)
+                    source_port: string(source.port)
+                    source_ip: string(source.ip)
+                    source_uid: source.uid
+                    source_name: source.name
+                    origin_ip: string(origin.ip)
+                    request_path: request.path
+                    request_size: string(request.size)
+                    response_size: string(response.size)
+                    response_duration: string(response.duration)
+                    response_code: string(response.code)
+                    api_service: api.service
+                    api_operation: api.operation
           wasmEnabled: false
           enabled: true
         stackdriver:
