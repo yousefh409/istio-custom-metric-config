@@ -26,7 +26,7 @@ spec:
       - request_size
       - response_size
       - response_duration
-      - response_code
+      # - response_code
       - api_service
       - api_operation
     enablePrometheusMerge: true
@@ -214,7 +214,7 @@ spec:
                     request_size: string(request.size)
                     response_size: string(response.size)
                     response_duration: string(response.duration)
-                    response_code: string(response.code)
+                    # response_code: string(response.code)
                     api_service: api.service
                     api_operation: api.operation
             outboundSidecar:
@@ -236,7 +236,7 @@ spec:
                     request_size: string(request.size)
                     response_size: string(response.size)
                     response_duration: string(response.duration)
-                    response_code: string(response.code)
+                    # response_code: string(response.code)
                     api_service: api.service
                     api_operation: api.operation
             gateway:
@@ -258,7 +258,7 @@ spec:
                     request_size: string(request.size)
                     response_size: string(response.size)
                     response_duration: string(response.duration)
-                    response_code: string(response.code)
+                    # response_code: string(response.code)
                     api_service: api.service
                     api_operation: api.operation
           wasmEnabled: false
