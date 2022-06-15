@@ -1,7 +1,6 @@
 import subprocess
 import sys
 
-
 def get_extra_stats(filename):
     with open(filename) as f:
         extra_stats = f.readlines()
@@ -45,6 +44,3 @@ if __name__ == "__main__":
     for deployment in deployments:
         update_config(deployment=deployment, config=updated_config)
     print("Configurations upgraded \n\tPlease give the changes a minute or two to propogate")
-    
-
-
