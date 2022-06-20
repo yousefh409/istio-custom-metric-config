@@ -217,6 +217,8 @@ spec:
                     # response_code: string(response.code)
                     api_service: api.service
                     api_operation: api.operation
+                - tags_to_remove:
+                    - namespace
             outboundSidecar:
               metrics:
                 - name: requests_total
@@ -239,6 +241,8 @@ spec:
                     # response_code: string(response.code)
                     api_service: api.service
                     api_operation: api.operation
+                - tags_to_remove:
+                    - namespace
             gateway:
               metrics:
                 - name: requests_total
@@ -261,6 +265,8 @@ spec:
                     # response_code: string(response.code)
                     api_service: api.service
                     api_operation: api.operation
+                - tags_to_remove:
+                    - namespace
           wasmEnabled: false
           enabled: true
         stackdriver:
