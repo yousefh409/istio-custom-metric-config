@@ -9,7 +9,11 @@ spec:
   # Mesh-wide setting
   meshConfig:
     defaultConfig:
-      proxyMetadata: {}
+      proxyMetadata: 
+        # Enable basic DNS proxying
+        ISTIO_META_DNS_CAPTURE: "true"
+        # Enable automatic address allocation, optional
+        ISTIO_META_DNS_AUTO_ALLOCATE: "true"
       extraStatTags:
       - request_host
       - destination_host
@@ -37,6 +41,8 @@ spec:
       envoyOtelAls:
         service: otel-collector.istio-system.svc.cluster.local
         port: 4317
+    outboundTrafficPolicy:
+      mode: ALLOW_ANY
 
   # Traffic management feature
   components:
