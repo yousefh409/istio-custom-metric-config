@@ -13,7 +13,7 @@ def get_deployments():
     # first row is column names
     deployment_info = deployment_info[1:]
     deployments = [x.split()[0] for x in deployment_info]
-    return deployments
+    return ['details-v1', 'productpage-v1', 'ratings-v1', 'reviews-v1', 'reviews-v2', 'reviews-v3']
 
 
 def get_updated_config(extra_stats):
