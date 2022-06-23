@@ -42,7 +42,7 @@ spec:
         service: otel-collector.istio-system.svc.cluster.local
         port: 4317
     outboundTrafficPolicy:
-      mode: ALLOW_ANY
+      mode: REGISTRY_ONLY
 
   # Traffic management feature
   components:
@@ -203,7 +203,7 @@ spec:
           configOverride:
             inboundSidecar:
               metrics:
-                - name: requests_total
+                - name: tcp_connections_opened_total # requests_total
                   dimensions:
                     request_host: request.host
                     destination_host: destination.service.host
@@ -215,19 +215,17 @@ spec:
                     source_ip: string(source.ip)
                     source_uid: source.uid
                     source_name: source.name
-                    origin_ip: string(origin.ip)
-                    request_path: request.path
-                    request_size: string(request.size)
-                    response_size: string(response.size)
-                    response_duration: string(response.duration)
+                    # origin_ip: string(origin.ip)
+                    # request_path: request.path
+                    # request_size: string(request.size)
+                    # response_size: string(response.size)
+                    # response_duration: string(response.duration)
                     # response_code: string(response.code)
-                    api_service: api.service
-                    api_operation: api.operation
                 - tags_to_remove:
                     - namespace
             outboundSidecar:
               metrics:
-                - name: requests_total
+                - name: tcp_connections_opened_total # requests_total
                   dimensions:
                     request_host: request.host
                     destination_host: destination.service.host
@@ -239,19 +237,19 @@ spec:
                     source_ip: string(source.ip)
                     source_uid: source.uid
                     source_name: source.name
-                    origin_ip: string(origin.ip)
-                    request_path: request.path
-                    request_size: string(request.size)
-                    response_size: string(response.size)
-                    response_duration: string(response.duration)
-                    # response_code: string(response.code)
-                    api_service: api.service
-                    api_operation: api.operation
+                    # origin_ip: string(origin.ip)
+                    # request_path: request.path
+                    # request_size: string(request.size)
+                    # response_size: string(response.size)
+                    # response_duration: string(response.duration)
+                    # # response_code: string(response.code)
+                    # api_service: api.service
+                    # api_operation: api.operation
                 - tags_to_remove:
                     - namespace
             gateway:
               metrics:
-                - name: requests_total
+                - name: tcp_connections_opened_total # requests_total
                   dimensions:		                
                     request_host: request.host
                     destination_host: destination.service.host
@@ -263,14 +261,14 @@ spec:
                     source_ip: string(source.ip)
                     source_uid: source.uid
                     source_name: source.name
-                    origin_ip: string(origin.ip)
-                    request_path: request.path
-                    request_size: string(request.size)
-                    response_size: string(response.size)
-                    response_duration: string(response.duration)
-                    # response_code: string(response.code)
-                    api_service: api.service
-                    api_operation: api.operation
+                    # origin_ip: string(origin.ip)
+                    # request_path: request.path
+                    # request_size: string(request.size)
+                    # response_size: string(response.size)
+                    # response_duration: string(response.duration)
+                    # # response_code: string(response.code)
+                    # api_service: api.service
+                    # api_operation: api.operation
                 - tags_to_remove:
                     - namespace
           wasmEnabled: false
