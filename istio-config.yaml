@@ -29,6 +29,7 @@ spec:
       - source_addres
       - source_name
       - connection_requested_server_name
+      - upstream_address
     enablePrometheusMerge: true
     accessLogFile: /dev/stdout
     extensionProviders:
@@ -215,6 +216,7 @@ spec:
                     source_address: source.address
                     source_name: source.name
                     connection_requested_server_name: connection.requested_server_name
+                    upstream_address: upstream.address
                 - tags_to_remove:
                     - namespace
             outboundSidecar:
@@ -235,6 +237,7 @@ spec:
                     source_address: source.address
                     source_name: source.name
                     connection_requested_server_name: connection.requested_server_name
+                    upstream_address: upstream.address
                 - tags_to_remove:
                     - namespace
             gateway:
@@ -255,6 +258,7 @@ spec:
                     source_address: source.address
                     source_name: source.name
                     connection_requested_server_name: connection.requested_server_name
+                    upstream_address: upstream.address
                 - tags_to_remove:
                     - namespace
           wasmEnabled: false
