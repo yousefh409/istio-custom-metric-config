@@ -15,8 +15,20 @@ spec:
         # Enable automatic address allocation, optional
         ISTIO_META_DNS_AUTO_ALLOCATE: "true"
       extraStatTags:
-      - recieved_bytes
-      - server_name
+      - request_host
+      - request_path
+      - request_size
+      - request_duration
+      - response_size
+      - response_duration
+      - response_code
+      - destination_port
+      - destination_address
+      - destination_name
+      - source_port
+      - source_addres
+      - source_name
+      - connection_requested_server_name
     enablePrometheusMerge: true
     accessLogFile: /dev/stdout
     extensionProviders:
@@ -189,80 +201,60 @@ spec:
               metrics:
                 - name: tcp_connections_opened_total # requests_total
                   dimensions:
-                    # request_host: request.host
-                    # destination_host: destination.service.host
-                    # destination_port: string(destination.port)
-                    # destination_ip: string(destination.ip)
-                    # destination_uid: destination.uid
-                    # destination_name: destination.name
-                    # source_port: string(source.port)
-                    # source_ip: string(source.ip)
-                    # source_uid: source.uid
-                    # source_name: source.name
-                    recieved_bytes: string(connection.received.bytes)
-                    # duration: string(connection.duration)
-                    server_name: connection.requested_server_name
-
-                    # origin_ip: string(origin.ip)
-                    # request_path: request.path
-                    # request_size: string(request.size)
-                    # response_size: string(response.size)
-                    # response_duration: string(response.duration)
-                    # response_code: string(response.code)
+                    request_host: request.host
+                    request_path: request.path
+                    request_size: string(request.size)
+                    request_duration: string(request.duration)
+                    response_size: string(response.size)
+                    response_duration: string(response.duration)
+                    response_code: string(response.code)
+                    destination_port: string(destination.port)
+                    destination_address: destination.address
+                    destination_name: destination.name
+                    source_port: string(source.port)
+                    source_address: source.address
+                    source_name: source.name
+                    connection_requested_server_name: connection.requested_server_name
                 - tags_to_remove:
                     - namespace
             outboundSidecar:
               metrics:
                 - name: tcp_connections_opened_total # requests_total
                   dimensions:
-                    # request_host: request.host
-                    # destination_host: destination.service.host
-                    # destination_port: string(destination.port)
-                    # destination_ip: string(destination.ip)
-                    # destination_uid: destination.uid
-                    # destination_name: destination.name
-                    # source_port: string(source.port)
-                    # source_ip: string(source.ip)
-                    # source_uid: source.uid
-                    # source_name: source.name
-                    recieved_bytes: string(connection.received.bytes)
-                    # duration: string(connection.duration)
-                    server_name: connection.requested_server_name
-                    # origin_ip: string(origin.ip)
-                    # request_path: request.path
-                    # request_size: string(request.size)
-                    # response_size: string(response.size)
-                    # response_duration: string(response.duration)
-                    # # response_code: string(response.code)
-                    # api_service: api.service
-                    # api_operation: api.operation
+                    request_host: request.host
+                    request_path: request.path
+                    request_size: string(request.size)
+                    request_duration: string(request.duration)
+                    response_size: string(response.size)
+                    response_duration: string(response.duration)
+                    response_code: string(response.code)
+                    destination_port: string(destination.port)
+                    destination_address: destination.address
+                    destination_name: destination.name
+                    source_port: string(source.port)
+                    source_address: source.address
+                    source_name: source.name
+                    connection_requested_server_name: connection.requested_server_name
                 - tags_to_remove:
                     - namespace
             gateway:
               metrics:
                 - name: tcp_connections_opened_total # requests_total
-                  dimensions:		                
-                    # request_host: request.host
-                    # destination_host: destination.service.host
-                    # destination_port: string(destination.port)
-                    # destination_ip: string(destination.ip)
-                    # destination_uid: destination.uid
-                    # destination_name: destination.name
-                    # source_port: string(source.port)
-                    # source_ip: string(source.ip)
-                    # source_uid: source.uid
-                    # source_name: source.name
-                    recieved_bytes: string(connection.received.bytes)
-                    # duration: string(connection.duration)
-                    server_name: connection.requested_server_name
-                    # origin_ip: string(origin.ip)
-                    # request_path: request.path
-                    # request_size: string(request.size)
-                    # response_size: string(response.size)
-                    # response_duration: string(response.duration)
-                    # # response_code: string(response.code)
-                    # api_service: api.service
-                    # api_operation: api.operation
+                  dimensions:
+                    request_host: request.host
+                    request_path: request.path
+                    request_size: string(request.size)
+                    request_duration: string(request.duration)
+                    response_size: string(response.size)
+                    response_duration: string(response.duration)
+                    response_code: string(response.code)
+                    destination_port: string(destination.port)
+                    destination_address: destination.address
+                    destination_name: destination.name
+                    source_port: string(source.port)
+                    source_address: source.address
+                    source_name: source.name
+                    connection_requested_server_name: connection.requested_server_name
                 - tags_to_remove:
                     - namespace
           wasmEnabled: false
