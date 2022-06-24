@@ -2,7 +2,7 @@
 cd ../..
 # Starting minikube to store k8's cluster
     # Note: Need to update if using some other method
-minikube start --cpus 4 --memory 8192
+minikube start --cpus 4 --memory  8192
 
 # setup istioctl command
 cd istio-1.14.1
