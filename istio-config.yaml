@@ -11,28 +11,12 @@ spec:
     defaultConfig:
       proxyMetadata: 
         # Enable basic DNS proxying
-        ISTIO_META_DNS_CAPTURE: "true"
+        ISTIO_META_DNS_CAPTURE: "true"    
         # Enable automatic address allocation, optional
         ISTIO_META_DNS_AUTO_ALLOCATE: "true"
       extraStatTags:
-      - request_host
-      - destination_host
-      - destination_port
-      - destination_ip
-      - destination_uid 
-      - destination_name 
-      - source_port
-      - source_ip
-      - source_uid
-      - source_name
-      - origin_ip
-      - request_path
-      - request_size
-      - response_size
-      - response_duration
-      # - response_code
-      - api_service
-      - api_operation
+      - recieved_bytes
+      - server_name
     enablePrometheusMerge: true
     accessLogFile: /dev/stdout
     extensionProviders:
@@ -205,16 +189,20 @@ spec:
               metrics:
                 - name: tcp_connections_opened_total # requests_total
                   dimensions:
-                    request_host: request.host
-                    destination_host: destination.service.host
-                    destination_port: string(destination.port)
-                    destination_ip: string(destination.ip)
-                    destination_uid: destination.uid
-                    destination_name: destination.name
-                    source_port: string(source.port)
-                    source_ip: string(source.ip)
-                    source_uid: source.uid
-                    source_name: source.name
+                    # request_host: request.host
+                    # destination_host: destination.service.host
+                    # destination_port: string(destination.port)
+                    # destination_ip: string(destination.ip)
+                    # destination_uid: destination.uid
+                    # destination_name: destination.name
+                    # source_port: string(source.port)
+                    # source_ip: string(source.ip)
+                    # source_uid: source.uid
+                    # source_name: source.name
+                    recieved_bytes: string(connection.received.bytes)
+                    # duration: string(connection.duration)
+                    server_name: connection.requested_server_name
+
                     # origin_ip: string(origin.ip)
                     # request_path: request.path
                     # request_size: string(request.size)
@@ -227,16 +215,19 @@ spec:
               metrics:
                 - name: tcp_connections_opened_total # requests_total
                   dimensions:
-                    request_host: request.host
-                    destination_host: destination.service.host
-                    destination_port: string(destination.port)
-                    destination_ip: string(destination.ip)
-                    destination_uid: destination.uid
-                    destination_name: destination.name
-                    source_port: string(source.port)
-                    source_ip: string(source.ip)
-                    source_uid: source.uid
-                    source_name: source.name
+                    # request_host: request.host
+                    # destination_host: destination.service.host
+                    # destination_port: string(destination.port)
+                    # destination_ip: string(destination.ip)
+                    # destination_uid: destination.uid
+                    # destination_name: destination.name
+                    # source_port: string(source.port)
+                    # source_ip: string(source.ip)
+                    # source_uid: source.uid
+                    # source_name: source.name
+                    recieved_bytes: string(connection.received.bytes)
+                    # duration: string(connection.duration)
+                    server_name: connection.requested_server_name
                     # origin_ip: string(origin.ip)
                     # request_path: request.path
                     # request_size: string(request.size)
@@ -251,16 +242,19 @@ spec:
               metrics:
                 - name: tcp_connections_opened_total # requests_total
                   dimensions:		                
-                    request_host: request.host
-                    destination_host: destination.service.host
-                    destination_port: string(destination.port)
-                    destination_ip: string(destination.ip)
-                    destination_uid: destination.uid
-                    destination_name: destination.name
-                    source_port: string(source.port)
-                    source_ip: string(source.ip)
-                    source_uid: source.uid
-                    source_name: source.name
+                    # request_host: request.host
+                    # destination_host: destination.service.host
+                    # destination_port: string(destination.port)
+                    # destination_ip: string(destination.ip)
+                    # destination_uid: destination.uid
+                    # destination_name: destination.name
+                    # source_port: string(source.port)
+                    # source_ip: string(source.ip)
+                    # source_uid: source.uid
+                    # source_name: source.name
+                    recieved_bytes: string(connection.received.bytes)
+                    # duration: string(connection.duration)
+                    server_name: connection.requested_server_name
                     # origin_ip: string(origin.ip)
                     # request_path: request.path
                     # request_size: string(request.size)
