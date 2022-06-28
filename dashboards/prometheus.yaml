@@ -432,7 +432,7 @@ spec:
       serviceAccountName: prometheus
       containers:
         - name: prometheus-server-configmap-reload
-          image: "jimmidyson/configmap-reload:v0.5.0"
+          image: "docker-sandbox.infra.cloudera.com/istio-cluster-config-samples/jimmidyson/configmap-reload@sha256:91467ba755a0c41199a63fe80a2c321c06edc4d3affb4f0ab6b3d20a49ed88d1"
           imagePullPolicy: "IfNotPresent"
           args:
             - --volume-dir=/etc/config
@@ -445,7 +445,7 @@ spec:
               readOnly: true
 
         - name: prometheus-server
-          image: "prom/prometheus:v2.31.1"
+          image: "docker-sandbox.infra.cloudera.com/istio-cluster-config-samples/prom/prometheus@sha256:c833de2399020386dc1e886363467f60b7f8e404aef5eaa7a757d6968cf5147b"
           imagePullPolicy: "IfNotPresent"
           args:
             - --storage.tsdb.retention.time=15d

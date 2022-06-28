@@ -1,2 +1,2 @@
 export SOURCE_POD=$(kubectl get pod -l app=sleep -o jsonpath='{.items..metadata.name}' | head -n1 | cut -d " " -f1)
-kubectl exec "$SOURCE_POD" -c sleep -- curl -sI https://www.google.com | grep  "HTTP/"; kubectl exec "$SOURCE_POD" -c sleep -- curl -sI https://edition.cnn.com | grep "HTTP/"
+kubectl exec "$SOURCE_POD" -c sleep -- curl -sI https://www.google.com | grep  "HTTP/"; kubectl exec "$SOURCE_POD" -c sleep -- curl -sI https://edition.cnn.com | grep "HTTP/"; kubectl exec "$SOURCE_POD" -c sleep -- curl -sI https://istio.io | grep "HTTP/"

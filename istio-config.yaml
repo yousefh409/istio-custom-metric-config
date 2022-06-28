@@ -21,7 +21,6 @@ spec:
       - request_duration
       - response_size
       - response_duration
-      - response_code
       - destination_port
       - destination_address
       - destination_name
@@ -208,7 +207,6 @@ spec:
                     request_duration: string(request.duration)
                     response_size: string(response.size)
                     response_duration: string(response.duration)
-                    response_code: string(response.code)
                     destination_port: string(destination.port)
                     destination_address: destination.address
                     destination_name: destination.name
@@ -229,7 +227,6 @@ spec:
                     request_duration: string(request.duration)
                     response_size: string(response.size)
                     response_duration: string(response.duration)
-                    response_code: string(response.code)
                     destination_port: string(destination.port)
                     destination_address: destination.address
                     destination_name: destination.name
@@ -250,7 +247,6 @@ spec:
                     request_duration: string(request.duration)
                     response_size: string(response.size)
                     response_duration: string(response.duration)
-                    response_code: string(response.code)
                     destination_port: string(destination.port)
                     destination_address: destination.address
                     destination_name: destination.name

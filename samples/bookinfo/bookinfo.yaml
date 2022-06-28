@@ -72,7 +72,7 @@ spec:
       serviceAccountName: bookinfo-details
       containers:
       - name: details
-        image: docker.io/istio/examples-bookinfo-details-v1:1.16.4
+        image: docker-sandbox.infra.cloudera.com/istio-cluster-config-samples/istio/examples-bookinfo-details-v1@sha256:30d373ab66194606eecd0d17809446d61775eafbff1600d2f6f771e7ca777e64
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
@@ -125,7 +125,7 @@ spec:
       serviceAccountName: bookinfo-ratings
       containers:
       - name: ratings
-        image: docker.io/istio/examples-bookinfo-ratings-v1:1.16.4
+        image: docker-sandbox.infra.cloudera.com/istio-cluster-config-samples/istio/examples-bookinfo-ratings-v1@sha256:94af356db643967ff2a18d7f79e660ffe0d060ceae017b95317b355403b9ef8a
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
@@ -178,7 +178,7 @@ spec:
       serviceAccountName: bookinfo-reviews
       containers:
       - name: reviews
-        image: docker.io/istio/examples-bookinfo-reviews-v1:1.16.4
+        image: docker-sandbox.infra.cloudera.com/istio-cluster-config-samples/istio/examples-bookinfo-reviews-v1@sha256:fbc61607e475721fb2459b72e0dca1469b958a85106bd70d864e0e1d2834a921
         imagePullPolicy: IfNotPresent
         env:
         - name: LOG_DIR
@@ -220,7 +220,7 @@ spec:
       serviceAccountName: bookinfo-reviews
       containers:
       - name: reviews
-        image: docker.io/istio/examples-bookinfo-reviews-v2:1.16.4
+        image: docker-sandbox.infra.cloudera.com/istio-cluster-config-samples/istio/examples-bookinfo-reviews-v2@sha256:7129af6a2f971036bbc6389f42b1dc15f051080749450b02907452a890cbff87
         imagePullPolicy: IfNotPresent
         env:
         - name: LOG_DIR
@@ -262,7 +262,7 @@ spec:
       serviceAccountName: bookinfo-reviews
       containers:
       - name: reviews
-        image: docker.io/istio/examples-bookinfo-reviews-v3:1.16.4
+        image: docker-sandbox.infra.cloudera.com/istio-cluster-config-samples/istio/examples-bookinfo-reviews-v3@sha256:0ef5ac928a22171fc9e67d023c5f7bafc9e0db011c184d296997a021d9ee280c
         imagePullPolicy: IfNotPresent
         env:
         - name: LOG_DIR
@@ -328,7 +328,7 @@ spec:
       serviceAccountName: bookinfo-productpage
       containers:
       - name: productpage
-        image: docker.io/istio/examples-bookinfo-productpage-v1:1.16.4
+        image: docker-sandbox.infra.cloudera.com/istio-cluster-config-samples/istio/examples-bookinfo-productpage-v1@sha256:3a2b0431e896b513a40126d5ea7ca5aee2b743b7ab6dbd19c109902c91867071
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
