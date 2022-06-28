@@ -19,7 +19,7 @@ kubectl apply -f samples/sleep/sleep.yaml
 # check that all services have been rolled out
 python3 wait-deployment-rollout.py
 # apply external service sidecars
-kubectl apply -f samples/sleep/external-service.yaml
+python3 apply-domain-service-entry.py
 # upload the extra stats configuration to each deployment
 python3 apply-deployment-stats.py   
 # check that all services have been rolled out
