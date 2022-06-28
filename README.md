@@ -17,3 +17,5 @@ Make sure to give permissions to of the scripts you make use of:
 3. Run ``istioctl dashboard grafana`` to start the grafana dashboard
 4. Import your chosen Grafana dashboard from the grafana-dashboards folder of the repository
 5.View/Create all the graphs you can think of!
+
+See https://github.com/istio/istio/issues/20890 for issues with istio-proxy being unavailable.
