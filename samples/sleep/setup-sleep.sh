@@ -2,7 +2,7 @@
 cd ../..
 # Starting minikube to store k8's cluster
     # Note: Need to update if using some other method
-minikube start --cpus 4 --memory  8192
+# minikube start --cpus 4 --memory  8192
 
 # setup istioctl command
 cd istio-1.14.1
@@ -12,6 +12,7 @@ cd ..
 # setting up istio config
 istioctl install -f istio-config.yaml -y # -d istio-1.14.1/manifests -y
 kubectl label namespace default istio-injection=enabled
+kubectl label namespace monitoring istio-injection=enabled
 
 # Setting up sample k8's cluster
     # Note: Not needed if cluster already setup, or not using sample app

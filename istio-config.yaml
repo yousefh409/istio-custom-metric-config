@@ -9,6 +9,7 @@ spec:
   # Mesh-wide setting
   meshConfig:
     defaultConfig:
+      holdApplicationUntilProxyStarts: true
       proxyMetadata: 
         # Enable basic DNS proxying
         ISTIO_META_DNS_CAPTURE: "true"    
@@ -104,6 +105,7 @@ spec:
       pilotCertProvider: istiod
       jwtPolicy: third-party-jwt
       proxy:
+        holdApplicationUntilProxyStarts: true
         image: proxyv2
         clusterDomain: "cluster.local"
         resources:
