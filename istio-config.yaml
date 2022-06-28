@@ -21,7 +21,6 @@ spec:
       - request_duration
       - response_size
       - response_duration
-      - response_code
       - destination_port
       - destination_address
       - destination_name
