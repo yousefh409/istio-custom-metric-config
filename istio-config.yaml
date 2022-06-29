@@ -39,7 +39,7 @@ spec:
         service: otel-collector.istio-system.svc.cluster.local
         port: 4317
     outboundTrafficPolicy:
-      mode: REGISTRY_ONLY
+      mode: ALLOW_ANY # REGISTRY_ONLY
 
   # Traffic management feature
   components:
@@ -106,7 +106,7 @@ spec:
       jwtPolicy: third-party-jwt
       proxy:
         holdApplicationUntilProxyStarts: true
-        image: proxyv2
+        image: docker-sandbox.infra.cloudera.com/istio-cluster-config-samples/istio/proxyv2@sha256:df69c1a7af7c0113424a48f5075ac6d0894123ec926fdb315e849b4f04e39616
         clusterDomain: "cluster.local"
         resources:
           requests:
@@ -130,7 +130,7 @@ spec:
         autoInject: enabled
         tracer: "zipkin"
       proxy_init:
-        image: proxyv2
+        image: docker-sandbox.infra.cloudera.com/istio-cluster-config-samples/istio/proxyv2@sha256:df69c1a7af7c0113424a48f5075ac6d0894123ec926fdb315e849b4f04e39616
         resources:
           limits:
             cpu: 2000m
